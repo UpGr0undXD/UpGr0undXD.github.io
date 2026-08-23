@@ -1,0 +1,22 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: auto;
+    padding: 40px;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+button {
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
