@@ -3,7 +3,7 @@ const sidebarList = document.getElementById("article-sidebar-list");
 if (sidebarList) {
   const currentPath = window.location.pathname;
 
-  fetch("/notes/notes.json")
+  fetch("/article/article.json")
     .then((response) => {
       if (!response.ok) {
         throw new Error("Failed to load notes list");
