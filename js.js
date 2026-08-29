@@ -138,7 +138,7 @@ const initialNotesCount = 3;
 
 async function loadNotes() {
     try {
-        const res = await fetch('notes/notes.json');
+        const res = await fetch('/article/notes.json');
         if (!res.ok) throw new Error('Failed to fetch notes');
         notesData = await res.json();
         renderNotes();
@@ -161,7 +161,7 @@ function renderNotes() {
             <span class="note-date">${note.date}</span>
             <h3>${note.title}</h3>
             <p>${note.description}</p>
-            <a href="${note.url}">Read →</a>
+            <a href="${note.url}">Read article →</a>
         `;
 
         notesListEl.appendChild(article);
