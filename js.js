@@ -127,6 +127,78 @@ yearElement.textContent =
 
 
 /* =========================
+   DYNAMIC NOTES (fetch + expand)
+========================= */
+
+const notesListEl = document.getElementById("notes-list");
+const notesToggle = document.getElementById("notes-toggle");
+let notesData = [];
+let showingAll = false;
+const initialNotesCount = 3;
+
+async function loadNotes() {
+    try {
+        const res = await fetch('notes/notes.json');
+        if (!res.ok) throw new Error('Failed to fetch notes');
+        notesData = await res.json();
+        renderNotes();
+    } catch (err) {
+        console.error('loadNotes error', err);
+    }
+}
+
+function renderNotes() {
+    if (!notesListEl) return;
+
+    const count = showingAll ? notesData.length : Math.min(initialNotesCount, notesData.length);
+    notesListEl.innerHTML = '';
+
+    notesData.slice(0, count).forEach((note) => {
+        const article = document.createElement('article');
+        article.className = 'note-card reveal';
+
+        article.innerHTML = `
+            <span class="note-date">${note.date}</span>
+            <h3>${note.title}</h3>
+            <p>${note.description}</p>
+            <a href="${note.url}">Read →</a>
+        `;
+
+        notesListEl.appendChild(article);
+
+        // If IntersectionObserver exists, observe the new element for reveal
+        if (typeof observer !== 'undefined') {
+            observer.observe(article);
+        }
+    });
+
+    if (!notesToggle) return;
+
+    if (notesData.length <= initialNotesCount) {
+        notesToggle.style.display = 'none';
+    } else {
+        notesToggle.style.display = 'inline-flex';
+        notesToggle.textContent = showingAll ? '收起' : `更多文章 (${notesData.length - initialNotesCount})`;
+        notesToggle.setAttribute('aria-expanded', String(showingAll));
+    }
+}
+
+if (notesToggle) {
+    notesToggle.addEventListener('click', () => {
+        showingAll = !showingAll;
+        renderNotes();
+        // focus first newly revealed item for accessibility when expanding
+        if (showingAll) {
+            const firstExtra = notesListEl.querySelector('.note-card:nth-child(' + (initialNotesCount + 1) + ')');
+            if (firstExtra) firstExtra.querySelector('a')?.focus();
+        }
+    });
+}
+
+loadNotes();
+
+
+/* =========================
    SCROLL REVEAL
 ========================= */
 

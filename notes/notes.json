@@ -1,0 +1,32 @@
+[
+  {
+    "date": "2026-08-01",
+    "title": "关于集合的几个思考",
+    "description": "一些我在集合论练习里遇到的有趣问题和解法。",
+    "url": "notes/article1.html"
+  },
+  {
+    "date": "2026-07-20",
+    "title": "一段短文：夏夜的琴声",
+    "description": "一篇随笔，关于在夏夜弹琴的感受。",
+    "url": "notes/article2.html"
+  },
+  {
+    "date": "2026-06-11",
+    "title": "概率小记",
+    "description": "写给自己的概率练习题和思路记录。",
+    "url": "notes/article3.html"
+  },
+  {
+    "date": "2026-05-05",
+    "title": "作曲练习集",
+    "description": "记录若干小段旋律与和声想法。",
+    "url": "notes/article4.html"
+  },
+  {
+    "date": "2026-04-01",
+    "title": "读书笔记：荒原狼",
+    "description": "对《荒原狼》部分章节的读后感。",
+    "url": "notes/article5.html"
+  }
+]
