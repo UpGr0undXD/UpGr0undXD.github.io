@@ -973,6 +973,133 @@ body.dark {
 
 
 /* =========================
+   ARTICLE PAGE LAYOUT
+========================= */
+
+.article-page {
+    background: var(--bg);
+    color: var(--text);
+}
+
+.article-layout {
+    width: min(100% - 32px, 1200px);
+    margin: 40px auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 28px;
+}
+
+.article-sidebar {
+    width: 280px;
+    position: sticky;
+    top: 24px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: var(--card);
+    backdrop-filter: blur(15px);
+    padding: 18px 14px;
+}
+
+.article-sidebar-title {
+    font-family: "DM Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin: 0 8px 14px;
+}
+
+#article-sidebar-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.article-link {
+    display: block;
+    padding: 12px 12px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.18);
+    text-decoration: none;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.article-link:hover {
+    transform: translateX(4px);
+    border-color: var(--accent);
+}
+
+.article-link.active {
+    border-color: var(--accent);
+    background: rgba(115, 87, 255, 0.08);
+}
+
+.article-date {
+    display: block;
+    font-family: "DM Mono", monospace;
+    font-size: 10px;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+}
+
+.article-link strong {
+    display: block;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--text);
+    font-weight: 600;
+}
+
+.article-main {
+    flex: 1;
+    min-width: 0;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    padding: 32px 28px;
+}
+
+.article-main h1 {
+    font-size: clamp(32px, 5vw, 52px);
+    letter-spacing: -0.05em;
+    line-height: 1.1;
+    margin-bottom: 26px;
+}
+
+.note-content {
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    font-size: 17px;
+    line-height: 1.9;
+    color: var(--text-secondary);
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 18px;
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+@media (max-width: 860px) {
+    .article-layout {
+        display: block;
+    }
+
+    .article-sidebar {
+        width: 100%;
+        position: static;
+        margin-bottom: 20px;
+    }
+
+    .article-main {
+        padding: 24px 18px;
+    }
+}
+
+/* =========================
    RESPONSIVE
 ========================= */
 

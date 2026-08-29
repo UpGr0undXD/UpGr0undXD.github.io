@@ -1,15 +1,21 @@
 <!doctype html>
-<html>
+<html lang="zh-CN">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>呓语</title>
   <link rel="stylesheet" href="/fig.css">
 </head>
-<body>
-  <main style="max-width:800px;margin:60px auto;padding:20px;">
-    <h1>呓语</h1>
-    <p>
+<body class="article-page">
+  <div class="article-layout">
+    <aside class="article-sidebar">
+      <div class="article-sidebar-title">全部文章</div>
+      <div id="article-sidebar-list"></div>
+    </aside>
+
+    <main class="article-main">
+      <h1>呓语</h1>
+      <div class="note-content">
       我时常怀疑我自己。但我也清楚地知道，我怀疑我是否在怀疑我自己。
 
       现在是凌晨。昨天的这个时候，我正坐在尚未起飞的飞机上。人很多，几乎座无虚席。行李架也许承受了它本不应该承担的重负，摇摇晃晃地。塑胶框架嘎吱嘎吱地响，前面小孩的声音像蚊子，嗡嗡的。
@@ -65,8 +71,11 @@
       二〇二六年八月十日
 
       于新加坡
-    </p>
-    <p><a href="/">返回</a></p>
-  </main>
+    </div>
+      <a class="back-link" href="/">← 返回首页</a>
+    </main>
+  </div>
+
+  <script src="/notes/sidebar.js"></script>
 </body>
 </html>
