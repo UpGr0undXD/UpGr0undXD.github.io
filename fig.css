@@ -749,6 +749,12 @@ body.dark {
     border-top: 1px solid var(--border);
 }
 
+/* Preserve original line breaks in article content */
+.note-content {
+    white-space: pre-wrap; /* preserves newlines and wraps long lines */
+    overflow-wrap: break-word;
+}
+
 .note-card {
     display: grid;
 
