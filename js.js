@@ -138,8 +138,8 @@ const initialNotesCount = 3;
 
 async function loadNotes() {
     try {
-        const res = await fetch('/article/notes.json');
-        if (!res.ok) throw new Error('Failed to fetch notes');
+        const res = await fetch('/article/article.json');
+        if (!res.ok) throw new Error('Failed to fetch articles');
         notesData = await res.json();
         renderNotes();
     } catch (err) {
@@ -153,22 +153,22 @@ function renderNotes() {
     const count = showingAll ? notesData.length : Math.min(initialNotesCount, notesData.length);
     notesListEl.innerHTML = '';
 
-    notesData.slice(0, count).forEach((note) => {
-        const article = document.createElement('article');
-        article.className = 'note-card reveal';
+    notesData.slice(0, count).forEach((article) => {
+        const articleEl = document.createElement('article');
+        articleEl.className = 'note-card reveal';
 
-        article.innerHTML = `
-            <span class="note-date">${note.date}</span>
-            <h3>${note.title}</h3>
-            <p>${note.description}</p>
-            <a href="${note.url}">Read article →</a>
+        articleEl.innerHTML = `
+            <span class="article-date">${article.date}</span>
+            <h3>${article.title}</h3>
+            <p>${article.description}</p>
+            <a href="${article.url}">Read article →</a>
         `;
 
-        notesListEl.appendChild(article);
+        notesListEl.appendChild(articleEl);
 
         // If IntersectionObserver exists, observe the new element for reveal
         if (typeof observer !== 'undefined') {
-            observer.observe(article);
+            observer.observe(articleEl);
         }
     });
 
