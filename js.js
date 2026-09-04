@@ -158,7 +158,7 @@ function renderNotes() {
         articleEl.className = 'note-card reveal';
 
         articleEl.innerHTML = `
-            <span class="article-date">${article.date}</span>
+            <span class="note-date">${article.date}</span>
             <h3>${article.title}</h3>
             <p>${article.description}</p>
             <a href="${article.url}">Read article →</a>
