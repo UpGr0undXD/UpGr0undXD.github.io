@@ -138,7 +138,7 @@ const initialNotesCount = 3;
 
 async function loadNotes() {
     try {
-        const res = await fetch('/article/article.json');
+        const res = await fetch('./article/article.json');
         if (!res.ok) throw new Error('Failed to fetch articles');
         notesData = await res.json();
         renderNotes();
@@ -157,12 +157,34 @@ function renderNotes() {
         const articleEl = document.createElement('article');
         articleEl.className = 'note-card reveal';
 
-        articleEl.innerHTML = `
-            <span class="note-date">${article.date}</span>
-            <h3>${article.title}</h3>
-            <p>${article.description}</p>
-            <a href="${article.url}">Read article →</a>
-        `;
+        const noteMain = document.createElement('div');
+        noteMain.className = 'note-main';
+
+        const titleEl = document.createElement('h3');
+        titleEl.textContent = article.title;
+
+        const quoteEl = document.createElement('blockquote');
+        quoteEl.className = 'note-quote';
+        quoteEl.textContent = article.excerpt || '';
+
+        const descEl = document.createElement('p');
+        descEl.textContent = article.description;
+
+        noteMain.appendChild(titleEl);
+        if (article.excerpt) noteMain.appendChild(quoteEl);
+        noteMain.appendChild(descEl);
+
+        const dateEl = document.createElement('span');
+        dateEl.className = 'note-date';
+        dateEl.textContent = article.date;
+
+        const linkEl = document.createElement('a');
+        linkEl.href = article.url;
+        linkEl.textContent = 'Read article →';
+
+        articleEl.appendChild(dateEl);
+        articleEl.appendChild(noteMain);
+        articleEl.appendChild(linkEl);
 
         notesListEl.appendChild(articleEl);
 

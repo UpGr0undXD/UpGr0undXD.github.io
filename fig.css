@@ -758,7 +758,7 @@ body.dark {
 .note-card {
     display: grid;
 
-    grid-template-columns: 120px 1fr auto;
+    grid-template-columns: 120px minmax(0, 1fr) auto;
 
     gap: 30px;
 
@@ -772,35 +772,39 @@ body.dark {
         padding-left 0.25s ease;
 }
 
-.note-card:hover {
-    padding-left: 10px;
-}
-
-.note-date {
-    font-family: "DM Mono", monospace;
-
-    font-size: 11px;
-
-    color: var(--text-secondary);
+.note-main {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
 }
 
 .note-card h3 {
     font-size: 21px;
-
     margin-bottom: 6px;
+}
+
+.note-quote {
+    margin: 8px auto 12px;
+    padding: 0;
+    max-width: 62ch;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.7;
+    font-style: italic;
 }
 
 .note-card p {
     color: var(--text-secondary);
-
     font-size: 14px;
+    margin: 0;
 }
 
 .note-card a {
     color: var(--accent);
-
     font-size: 13px;
     font-weight: 600;
+    justify-self: end;
 }
 
 
@@ -1002,6 +1006,17 @@ body.dark {
 
 .article-sidebar-title {
     font-family: "DM Mono", monospace;
+
+    .note-quote {
+        margin: 8px 0 14px;
+        padding-left: 12px;
+        border-left: 3px solid var(--accent);
+        color: var(--text);
+        font-style: italic;
+        background: rgba(0,0,0,0.02);
+        padding: 10px 12px;
+        border-radius: 8px;
+    }
     font-size: 11px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
