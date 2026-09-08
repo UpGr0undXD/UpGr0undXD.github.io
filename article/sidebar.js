@@ -1,6 +1,8 @@
 const sidebarList = document.getElementById("article-sidebar-list");
 
-if (sidebarList) {
+if (!sidebarList) {
+  // Nothing to do when sidebar element is missing
+} else {
   const currentPath = window.location.pathname;
 
   fetch("/article/article.json")
@@ -13,7 +15,7 @@ if (sidebarList) {
     .then((items) => {
       items.forEach((item) => {
         const link = document.createElement("a");
-        const url = item.url.startsWith("/") ? item.url : "/" + item.url;
+        const url = item.url && item.url.startsWith("/") ? item.url : "/" + (item.url || "");
 
         link.href = url;
         link.className = "article-link" + (currentPath === url ? " active" : "");
