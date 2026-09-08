@@ -1,0 +1,13 @@
+:root{--card:#0f1724;--bg:#0b1220;--accent:#8be9fd}
+body{font-family:Inter,DM Mono,monospace;background:var(--bg);color:#e6eef8}
+.hand-box{margin:12px 0;padding:12px;border-radius:8px;background:rgba(255,255,255,0.02)}
+.hand{display:flex;gap:8px;flex-wrap:wrap}
+.card{min-width:48px;height:68px;border-radius:6px;padding:6px 8px;background:linear-gradient(180deg,#fff,#eee);color:#000;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 6px 18px rgba(0,0,0,0.3);font-weight:700}
+.card.red{color:#b91c1c}
+.hand-value{margin-top:8px;font-weight:600}
+#board{display:flex;gap:12px;flex-direction:column}
+@media(min-width:640px){#board{flex-direction:row}}
+#message{color:var(--accent)}
+.button{padding:8px 12px;border-radius:6px;border:0;cursor:pointer}
+.button-primary{background:linear-gradient(90deg,#6ee7b7,#3b82f6);color:#05264a}
+.button-secondary{background:rgba(255,255,255,0.06);color:#e6eef8}

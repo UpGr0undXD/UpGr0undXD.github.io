@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Blackjack (21)</title>
+  <link rel="stylesheet" href="../fig.css">
+  <link rel="stylesheet" href="blackjack.css">
+  <style>
+    body { background: transparent; }
+  </style>
+</head>
+<body>
+
+  <main class="section" style="padding:18px; max-width:760px; margin:12px auto; background:var(--card); border-radius:8px;">
+
+    <h1 style="margin-top:0;">Blackjack (21)</h1>
+
+    <div id="status-row" style="display:flex;gap:12px;align-items:center;margin-bottom:12px;flex-wrap:wrap">
+      <div>Chips: <strong id="chips">100</strong></div>
+      <label>Bet: <input id="bet" type="number" min="1" value="10" style="width:80px"></label>
+      <button id="dealBtn" class="button button-primary">Deal</button>
+      <button id="hitBtn" class="button button-secondary" disabled>Hit</button>
+      <button id="standBtn" class="button button-secondary" disabled>Stand</button>
+      <button id="newRoundBtn" class="button" disabled>New Round</button>
+    </div>
+
+    <div id="board">
+      <div class="hand-box">
+        <h3>Dealer</h3>
+        <div id="dealer" class="hand"></div>
+        <div id="dealer-value" class="hand-value"></div>
+      </div>
+
+      <div class="hand-box">
+        <h3>Player</h3>
+        <div id="player" class="hand"></div>
+        <div id="player-value" class="hand-value"></div>
+      </div>
+    </div>
+
+    <div id="message" style="margin-top:12px;font-weight:600"></div>
+
+  </main>
+
+  <script src="blackjack.js"></script>
+</body>
+</html>
