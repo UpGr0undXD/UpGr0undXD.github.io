@@ -6,12 +6,20 @@
   const dealBtn = document.getElementById('dealBtn');
   const hitBtn = document.getElementById('hitBtn');
   const standBtn = document.getElementById('standBtn');
+  const rulesBtn = document.getElementById('rulesBtn');
   const newRoundBtn = document.getElementById('newRoundBtn');
   const dealerEl = document.getElementById('dealer');
   const playerEl = document.getElementById('player');
   const playerValueEl = document.getElementById('player-value');
   const dealerValueEl = document.getElementById('dealer-value');
   const messageEl = document.getElementById('message');
+  const rulesModal = document.getElementById('rules-modal');
+  const resultModal = document.getElementById('result-modal');
+  const resultTitle = document.getElementById('result-title');
+  const resultText = document.getElementById('result-text');
+  const closeRulesBtn = document.getElementById('closeRulesBtn');
+  const closeResultBtn = document.getElementById('closeResultBtn');
+  const continueBtn = document.getElementById('continueBtn');
 
   let chips = 100;
   let bet = 10;
@@ -19,17 +27,60 @@
   let player = [];
   let dealer = [];
   let inRound = false;
+  let audioCtx = null;
+
+  function getAudioContext() {
+    if (!audioCtx) {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      audioCtx = AudioCtx ? new AudioCtx() : null;
+    }
+    return audioCtx;
+  }
+
+  function playTone(frequency, duration, volume, type = 'sine') {
+    const ctx = getAudioContext();
+    if (!ctx) return;
+    if (ctx.state === 'suspended') ctx.resume();
+
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = type;
+    osc.frequency.value = frequency;
+    gain.gain.value = volume;
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+    osc.stop(ctx.currentTime + duration);
+  }
+
+  function playDealSound() {
+    playTone(520, 0.12, 0.02, 'triangle');
+    setTimeout(() => playTone(680, 0.08, 0.02, 'triangle'), 70);
+  }
+
+  function playWinSound() {
+    playTone(440, 0.12, 0.04, 'sine');
+    setTimeout(() => playTone(660, 0.12, 0.04, 'sine'), 90);
+    setTimeout(() => playTone(880, 0.18, 0.04, 'triangle'), 180);
+  }
+
+  function playLoseSound() {
+    playTone(260, 0.12, 0.04, 'sawtooth');
+    setTimeout(() => playTone(200, 0.18, 0.04, 'sawtooth'), 80);
+  }
 
   function createDeck() {
     const suits = ['♠', '♥', '♦', '♣'];
     const ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
-    const d = [];
+    const deck = [];
+
     for (const suit of suits) {
       for (const rank of ranks) {
-        d.push({ suit, rank });
+        deck.push({ suit, rank });
       }
     }
-    return d;
+    return deck;
   }
 
   function shuffle(array) {
@@ -66,6 +117,7 @@
 
   function renderCard(card, hidden = false) {
     const el = document.createElement('div');
+
     if (hidden) {
       el.className = 'card card-back';
       return el;
@@ -102,16 +154,38 @@
     const playerTotal = handValue(player);
     const dealerTotal = handValue(dealer);
 
-    playerValueEl.textContent = playerTotal ? `Value: ${playerTotal}` : '';
-    dealerValueEl.textContent = revealDealer && dealerTotal ? `Value: ${dealerTotal}` : '';
+    playerValueEl.textContent = playerTotal ? `点数: ${playerTotal}` : '';
+    dealerValueEl.textContent = revealDealer && dealerTotal ? `点数: ${dealerTotal}` : '';
+  }
+
+  function updateChips() {
+    chipsEl.textContent = chips;
   }
 
   function setMessage(text) {
     messageEl.textContent = text;
   }
 
-  function updateChips() {
-    chipsEl.textContent = chips;
+  function openRulesModal() {
+    rulesModal.classList.remove('hidden');
+    rulesModal.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeRulesModal() {
+    rulesModal.classList.add('hidden');
+    rulesModal.setAttribute('aria-hidden', 'true');
+  }
+
+  function openResultModal(title, text) {
+    resultTitle.textContent = title;
+    resultText.textContent = text;
+    resultModal.classList.remove('hidden');
+    resultModal.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeResultModal() {
+    resultModal.classList.add('hidden');
+    resultModal.setAttribute('aria-hidden', 'true');
   }
 
   function resetBoard() {
@@ -141,12 +215,15 @@
 
     if (playerTotal === 21 && player.length === 2) {
       if (dealerTotal === 21 && dealer.length === 2) {
+        openResultModal('平局', '双方都是黑杰克！本轮不输不赢。');
+        setMessage('平局：双方黑杰克。');
         chips += 0;
-        setMessage('Push — both have Blackjack.');
       } else {
         const payout = Math.round(bet * 1.5);
         chips += payout;
-        setMessage(`Blackjack! You win ${payout} chips.`);
+        openResultModal('黑杰克！', `你拿到黑杰克，赢得 ${payout} 筹码。`);
+        setMessage(`黑杰克！你赢得 ${payout} 筹码。`);
+        playWinSound();
       }
       updateChips();
       endRound();
@@ -161,13 +238,14 @@
     bet = Math.max(1, Math.floor(requestedBet || 1));
 
     if (bet > chips) {
-      setMessage('Your bet exceeds your available chips.');
+      setMessage('下注金额超过当前筹码。');
       return;
     }
 
     chips -= bet;
     updateChips();
     inRound = true;
+    closeResultModal();
     resetBoard();
 
     player.push(drawCard());
@@ -175,6 +253,7 @@
     player.push(drawCard());
     dealer.push(drawCard());
 
+    playDealSound();
     renderHands(false);
     dealBtn.disabled = true;
     hitBtn.disabled = false;
@@ -190,11 +269,14 @@
     if (!inRound) return;
 
     player.push(drawCard());
+    playDealSound();
     renderHands(false);
 
     const playerTotal = handValue(player);
     if (playerTotal > 21) {
-      setMessage('Busted! Dealer wins.');
+      setMessage('爆牌！庄家获胜。');
+      openResultModal('失败', '你爆牌了，本轮损失 ' + bet + ' 筹码。');
+      playLoseSound();
       updateChips();
       endRound();
     }
@@ -203,6 +285,7 @@
   function dealerPlay() {
     while (handValue(dealer) < 17) {
       dealer.push(drawCard());
+      playDealSound();
       renderHands(true);
     }
   }
@@ -212,25 +295,34 @@
     const dealerTotal = handValue(dealer);
 
     if (playerTotal > 21) {
-      setMessage('Busted! Dealer wins.');
+      setMessage('爆牌！庄家获胜。');
+      openResultModal('失败', '你爆牌了，本轮损失 ' + bet + ' 筹码。');
+      playLoseSound();
       return;
     }
 
     if (dealerTotal > 21) {
       chips += bet * 2;
-      setMessage('Dealer busted — you win!');
+      setMessage('庄家爆牌，你赢了！');
+      openResultModal('胜利', '庄家爆牌，你赢得 ' + (bet * 2) + ' 筹码。');
+      playWinSound();
       updateChips();
       return;
     }
 
     if (playerTotal > dealerTotal) {
       chips += bet * 2;
-      setMessage('You win!');
+      setMessage('你赢了！');
+      openResultModal('胜利', '你赢得 ' + (bet * 2) + ' 筹码。');
+      playWinSound();
     } else if (playerTotal < dealerTotal) {
-      setMessage('Dealer wins.');
+      setMessage('庄家赢了。');
+      openResultModal('失败', '庄家更接近 21 点，本轮损失 ' + bet + ' 筹码。');
+      playLoseSound();
     } else {
       chips += bet;
-      setMessage('Push.');
+      setMessage('平局，返还本金。');
+      openResultModal('平局', '双方点数相同，本轮返还本金。');
     }
 
     updateChips();
@@ -244,12 +336,33 @@
     endRound();
   }
 
-  // events
+  document.querySelectorAll('.chip').forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const value = Number(chip.dataset.value);
+      betEl.value = value;
+      bet = value;
+      setMessage(`已选择 ${value} 筹码下注。`);
+    });
+  });
+
+  rulesBtn.addEventListener('click', openRulesModal);
+  closeRulesBtn.addEventListener('click', closeRulesModal);
+  closeResultBtn.addEventListener('click', closeResultModal);
+  continueBtn.addEventListener('click', closeResultModal);
+
+  rulesModal.addEventListener('click', (event) => {
+    if (event.target === rulesModal) closeRulesModal();
+  });
+
+  resultModal.addEventListener('click', (event) => {
+    if (event.target === resultModal) closeResultModal();
+  });
+
   dealBtn.addEventListener('click', startRound);
   hitBtn.addEventListener('click', playerHit);
   standBtn.addEventListener('click', playerStand);
   newRoundBtn.addEventListener('click', () => {
-    setMessage('Place your bet and deal.');
+    setMessage('准备就绪，选择下注并发牌。');
     resetBoard();
     newRoundBtn.disabled = true;
     dealBtn.disabled = false;

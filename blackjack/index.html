@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Blackjack (21)</title>
+  <title>Blackjack (21) | 赌场桌</title>
   <link rel="stylesheet" href="../fig.css">
   <link rel="stylesheet" href="blackjack.css">
 </head>
@@ -12,32 +12,42 @@
     <div class="table-header">
       <div>
         <p class="eyebrow">CASINO TABLE</p>
-        <h1>Blackjack (21)</h1>
+        <h1>二十一点</h1>
       </div>
+
       <div class="balance-box">
-        <span>Chips</span>
+        <span>筹码</span>
         <strong id="chips">100</strong>
       </div>
     </div>
 
     <div class="status-row">
       <label class="bet-wrap" for="bet">
-        <span>Bet</span>
+        <span>下注</span>
         <input id="bet" type="number" min="1" max="1000" value="10">
       </label>
 
       <div class="button-row">
-        <button id="dealBtn" class="button button-primary">Deal</button>
-        <button id="hitBtn" class="button button-secondary" disabled>Hit</button>
-        <button id="standBtn" class="button button-secondary" disabled>Stand</button>
-        <button id="newRoundBtn" class="button button-ghost" disabled>New Round</button>
+        <button id="dealBtn" class="button button-primary">发牌</button>
+        <button id="hitBtn" class="button button-secondary" disabled>要牌</button>
+        <button id="standBtn" class="button button-secondary" disabled>停牌</button>
+        <button id="rulesBtn" class="button button-ghost">规则</button>
+        <button id="newRoundBtn" class="button button-ghost" disabled>新一轮</button>
       </div>
+    </div>
+
+    <div class="chip-row" aria-label="选择筹码">
+      <button class="chip chip-5" data-value="5">5</button>
+      <button class="chip chip-10" data-value="10">10</button>
+      <button class="chip chip-25" data-value="25">25</button>
+      <button class="chip chip-50" data-value="50">50</button>
+      <button class="chip chip-100" data-value="100">100</button>
     </div>
 
     <div class="table-surface">
       <div class="hand-box">
         <div class="hand-label-row">
-          <h3>Dealer</h3>
+          <h3>庄家</h3>
           <span id="dealer-value" class="hand-value"></span>
         </div>
         <div id="dealer" class="hand" aria-live="polite"></div>
@@ -45,15 +55,42 @@
 
       <div class="hand-box">
         <div class="hand-label-row">
-          <h3>Player</h3>
+          <h3>玩家</h3>
           <span id="player-value" class="hand-value"></span>
         </div>
         <div id="player" class="hand" aria-live="polite"></div>
       </div>
     </div>
 
-    <div id="message" class="message" aria-live="polite">Place your bet and deal.</div>
+    <div id="message" class="message" aria-live="polite">准备就绪，选择下注并发牌。</div>
   </main>
+
+  <div id="rules-modal" class="modal hidden" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>游戏规则</h2>
+        <button id="closeRulesBtn" class="close-btn" aria-label="关闭">×</button>
+      </div>
+      <ul>
+        <li>玩家与庄家各发两张牌，目标尽量接近 21 点但不能超过。</li>
+        <li>A 可以记为 1 或 11，取最优值；J/Q/K 为 10。</li>
+        <li>庄家必须在 17 点后停牌，低于 17 点必须补牌。</li>
+        <li>两张牌总和为 21，且不超过庄家时算黑杰克，通常按 3:2 结算。</li>
+        <li>爆牌则直接失败；平局则返还本金。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="result-modal" class="modal hidden" aria-hidden="true">
+    <div class="modal-card result-card">
+      <div class="modal-header">
+        <h2 id="result-title">本轮结果</h2>
+        <button id="closeResultBtn" class="close-btn" aria-label="关闭">×</button>
+      </div>
+      <p id="result-text">本轮结果说明</p>
+      <button id="continueBtn" class="button button-primary">继续</button>
+    </div>
+  </div>
 
   <script src="blackjack.js"></script>
 </body>
