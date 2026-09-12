@@ -318,3 +318,19 @@ navLinks.forEach(
 
     }
 );
+
+
+/* =========================
+   MUSIC EXPAND TOGGLE
+========================= */
+
+const musicToggle = document.querySelector('.music-toggle');
+const musicCollapsible = document.getElementById('music-collapsible');
+
+if (musicToggle && musicCollapsible) {
+    musicToggle.addEventListener('click', () => {
+        const isOpen = musicCollapsible.classList.toggle('is-open');
+        musicToggle.setAttribute('aria-expanded', String(isOpen));
+        musicToggle.textContent = isOpen ? '收起作品' : '展开更多作品';
+    });
+}
