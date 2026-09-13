@@ -917,22 +917,17 @@ body.dark {
 }
 
 .music-collapsible {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows 0.35s ease, opacity 0.25s ease;
-    opacity: 0;
+    max-height: 0;
     overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;
     margin-top: 0;
 }
 
 .music-collapsible.is-open {
-    grid-template-rows: 1fr;
+    max-height: 2000px;
     opacity: 1;
     margin-top: 8px;
-}
-
-.music-collapsible > article {
-    overflow: hidden;
 }
 
 .music-work-item {
