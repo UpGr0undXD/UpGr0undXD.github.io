@@ -1012,6 +1012,10 @@ body.dark {
 
 .notes-list {
     border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding-top: 12px;
 }
 
 /* Preserve original line breaks in article content */
@@ -1029,12 +1033,23 @@ body.dark {
 
     align-items: center;
 
-    padding: 30px 0;
+    padding: 30px 24px;
 
-    border-bottom: 1px solid var(--border);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.04);
 
     transition:
-        padding-left 0.25s ease;
+        padding-left 0.25s ease,
+        transform 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.note-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
 }
 
 .note-main {
@@ -1094,9 +1109,10 @@ body.dark {
             rgba(115, 87, 255, 0.14),
             transparent 35%
         ),
-        var(--card);
+        rgba(255, 255, 255, 0.7);
 
     backdrop-filter: blur(20px);
+    box-shadow: 0 24px 55px rgba(0, 0, 0, 0.06);
 
     text-align: center;
 }
