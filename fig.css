@@ -1005,6 +1005,246 @@ body.dark {
     min-width: 180px;
 }
 
+
+/* =========================
+   NOTES
+========================= */
+
+.notes-list {
+    border-top: 1px solid var(--border);
+}
+
+/* Preserve original line breaks in article content */
+.note-content {
+    white-space: pre-wrap; /* preserves newlines and wraps long lines */
+    overflow-wrap: break-word;
+}
+
+.note-card {
+    display: grid;
+
+    grid-template-columns: 120px minmax(0, 1fr) auto;
+
+    gap: 30px;
+
+    align-items: center;
+
+    padding: 30px 0;
+
+    border-bottom: 1px solid var(--border);
+
+    transition:
+        padding-left 0.25s ease;
+}
+
+.note-main {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.note-card h3 {
+    font-size: 21px;
+    margin-bottom: 6px;
+}
+
+.note-quote {
+    margin: 8px auto 12px;
+    padding: 0;
+    max-width: 62ch;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.7;
+    font-style: italic;
+}
+
+.note-card p {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin: 0;
+}
+
+.note-card a {
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    justify-self: end;
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-section {
+    padding-bottom: 100px;
+}
+
+.contact-box {
+    padding: 70px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 26px;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(115, 87, 255, 0.14),
+            transparent 35%
+        ),
+        var(--card);
+
+    backdrop-filter: blur(20px);
+
+    text-align: center;
+}
+
+.contact-box h2 {
+    margin-top: 12px;
+
+    font-size: clamp(44px, 7vw, 80px);
+}
+
+.contact-box p:not(.section-number) {
+    max-width: 600px;
+
+    margin: 25px auto 35px;
+
+    color: var(--text-secondary);
+}
+
+.contact-links {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+}
+
+.contact-links a {
+    padding: 12px 17px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    font-size: 13px;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.contact-links a:hover {
+    background: var(--bg-secondary);
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    width: min(100% - 40px, var(--max-width));
+
+    margin: 0 auto;
+
+    padding: 30px 0 40px;
+
+    border-top: 1px solid var(--border);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    color: var(--text-secondary);
+
+    font-family: "DM Mono", monospace;
+
+    font-size: 11px;
+}
+
+.footer-right {
+    text-align: right;
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes blink {
+
+    0%,
+    45% {
+        opacity: 1;
+    }
+
+    46%,
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+.reveal {
+    opacity: 0;
+
+    transform: translateY(30px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
 @media (max-width: 900px) {
 
     .nav-links {
