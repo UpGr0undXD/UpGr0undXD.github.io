@@ -321,16 +321,137 @@ navLinks.forEach(
 
 
 /* =========================
-   MUSIC EXPAND TOGGLE
+   DYNAMIC MUSIC LIST
 ========================= */
 
-const musicToggle = document.querySelector('.music-toggle');
-const musicCollapsible = document.getElementById('music-collapsible');
+const musicListEl = document.getElementById("music-collapsible");
+const musicFeaturedEl = document.getElementById("music-featured-list");
+const musicToggle = document.querySelector(".music-toggle");
 
-if (musicToggle && musicCollapsible) {
-    musicToggle.addEventListener('click', () => {
-        const isOpen = musicCollapsible.classList.toggle('is-open');
-        musicToggle.setAttribute('aria-expanded', String(isOpen));
-        musicToggle.textContent = isOpen ? '收起作品' : '展开更多作品';
-    });
+let musicData = [];
+let showingAllMusic = false;
+const initialMusicCount = 3;
+
+async function loadMusic() {
+  try {
+    const res = await fetch("./music/music.json");
+    if (!res.ok) throw new Error("Failed to fetch music data");
+    musicData = await res.json();
+    renderMusic();
+  } catch (err) {
+    console.error("loadMusic error", err);
+  }
 }
+
+function renderFeaturedMusic() {
+  if (!musicFeaturedEl) return;
+
+  const featured = musicData.filter(item => item.featured);
+  musicFeaturedEl.innerHTML = "";
+
+  featured.forEach((item) => {
+    const card = document.createElement("div");
+    card.className = "music-featured";
+
+    card.innerHTML = `
+      <div class="music-featured-copy">
+        <p class="music-kicker">Representative work</p>
+        <h3>${item.title}</h3>
+        <p>
+        ${item.subtitle || ""}
+        ${item.subtitle ? "<br>" : ""}
+        ${item.description.replace(/\n/g, "<br>")}
+        </p>
+        <div class="project-tags">
+          ${item.tags.map(tag => `<span>${tag}</span>`).join("")}
+        </div>
+        <div class="music-actions">
+          <a href="${item.video}" target="_blank" class="button button-primary">
+            Watch performance ↗
+          </a>
+          ${item.pdf ? `<a href="${item.pdf}" target="_blank" class="button button-secondary">Open score PDF ↗</a>` : ""}
+        </div>
+      </div>
+      <div class="music-featured-media">
+        <iframe
+          width="560"
+          height="315"
+          src="${item.video.replace("watch?v=", "embed/")}"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+      </div>
+    `;
+
+    musicFeaturedEl.appendChild(card);
+  });
+}
+
+function renderMusic() {
+  if (!musicListEl) return;
+
+  const extraItems = musicData.filter(item => !item.featured);
+  const count = showingAllMusic ? extraItems.length : Math.min(initialMusicCount, extraItems.length);
+
+  musicListEl.innerHTML = "";
+
+  extraItems.slice(0, count).forEach((item) => {
+    const article = document.createElement("article");
+    article.className = "music-work-item";
+
+    article.innerHTML = `
+      <div class="music-work-media">
+        <iframe
+          width="560"
+          height="315"
+          src="${item.video.replace("watch?v=", "embed/")}"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="music-work-content">
+        <div class="music-work-number">${item.number || "0"}</div>
+        <h3>${item.title}</h3>
+        <p>
+          ${item.subtitle || ""}
+          <br>${item.description}
+        </p>
+
+        <div class="project-tags">
+          ${item.tags.map(tag => `<span>${tag}</span>`).join("")}
+        </div>
+
+        <div class="music-actions compact">
+          <a href="${item.video}" target="_blank">Video ↗</a>
+          ${item.pdf ? `<a href="${item.pdf}" target="_blank">PDF score ↗</a>` : ""}
+        </div>
+      </div>
+    `;
+
+    musicListEl.appendChild(article);
+  });
+
+  if (musicToggle) {
+    const totalExtra = extraItems.length;
+    musicToggle.style.display = totalExtra <= initialMusicCount ? "none" : "inline-flex";
+    musicToggle.textContent = showingAllMusic ? "收起作品" : "展开更多作品";
+    musicToggle.setAttribute("aria-expanded", String(showingAllMusic));
+  }
+}
+
+if (musicToggle) {
+  musicToggle.addEventListener("click", () => {
+    showingAllMusic = !showingAllMusic;
+    renderMusic();
+  });
+}
+
+renderFeaturedMusic();
+loadMusic();

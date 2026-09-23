@@ -1,0 +1,59 @@
+[
+  {
+    "title": "Piano Concerto No.3",
+    "subtitle": "(op.7 2026)",
+    "description": "这首第三钢协规模宏大，变化多端，沉重而复杂。动机在挣扎中发展，旋律在不断递进。全曲不分乐章，连续演奏。\n参考了肖斯塔科维奇第五交响曲。\nIt is a large-scale, complex, and heavy work. The motifs develop in struggle, and the melodies progress continuously. The entire piece is performed without breaks between movements.\nInspired by Shostakovich's Symphony No. 5.",
+    "tags": ["Piano", "Orchestra", "Featured"],
+    "video": "https://www.youtube.com/embed/mG0zi96sgEo?si=73WTXMdSbOaNwbCj",
+    "pdf": "#",
+    "featured": true,
+    "featuredVideo": true
+  },
+  {
+    "title": "Piano Impromptu No.1",
+    "subtitle": "(op.18 2026)",
+    "description": "第一首纯即兴曲。没有谱子，随心而弹。总体分为三个乐章，也可以看作无乐章分割。这下没有人说我不会弹钢琴了。\nThis is my first purely improvised piece. There is no sheet music; I simply played from the heart. Overall, it is structured into three movements, though it could also be viewed as a continuous piece without distinct breaks. Now, no one can say I don't know how to play the piano.",
+    "tags": ["Piano", "Impromptu", "Improvisation"],
+    "video": "https://www.youtube.com/embed/eHJ0IlmRd0M?si=nht9NzHoqviaB95e",
+    "pdf": "#",
+    "featured": true,
+    "featuredVideo": true
+  },
+  {
+    "title": "Piano Trio No.1 —— For Cello, Contracello and Piano",
+    "subtitle": "(op.15 2026)",
+    "description": "一首钢琴三重奏小品。钢琴，大提琴，低音提琴沉重的声音昭示着一个伟大的终章。\nA piano trio piece. The heavy sounds of the piano, cello, and double bass herald a grand finale.\nThis is my first purely improvised piece. There is no sheet music; I simply played from the heart. Overall, it is structured into three movements, though it could also be viewed as a continuous piece without distinct breaks. Now, no one can say I don't know how to play the piano.",
+    "tags": ["Piano", "Trio", "Atonal"],
+    "video": "https://www.youtube.com/embed/6u-cw3AccV8?si=helbVuNhfvBtovs7",
+    "pdf": "#",
+    "featured": true,
+    "featuredVideo": true
+  },
+  {
+    "title": "Symphony No.1 \"A Voyage\"",
+    "number": "01",
+    "subtitle": "(op.4 2025)",
+    "description": "充满个性与张力的第一交响曲。波澜壮阔的大海，激昂的风暴，宁静的港湾，交织成一段奇妙的旅程。\nA symphony full of personality and tension. The vast sea, the raging storm",
+    "tags": ["Film score", "Atmospheric"],
+    "video": "https://www.youtube.com/embed/YgiKPqzMhZA?si=5vfk2IMuJlCrcJJd",
+    "pdf": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+  },
+  {
+    "title": "Sonata for 2 Pianos",
+    "number": "02",
+    "subtitle": "(op.14 2026)",
+    "description": "一首为两架钢琴而作的奏鸣曲。两架钢琴在对话中交织，旋律在空间中回荡，形成一种独特的音乐体验。\nA sonata for two pianos. The two pianos intertwine in dialogue, with melodies echoing in space, creating a unique musical experience.",
+    "tags": ["Duo", "Piano"],
+    "video": "https://www.youtube.com/embed/yB9YwTT139A?si=gwt-mjwFblBT4Kxp",
+    "pdf": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+  },
+  {
+    "title": "Piano short Sonata No.1",
+    "number": "03",
+    "subtitle": "(op.13 2026)",
+    "description": "短小精悍，强而有力。",
+    "tags": ["Electronic", "cinortcelE"],
+    "video": "https://www.youtube.com/embed/ZlZIqD1WMDQ?si=HtCvdUNGqlnDFyeB",
+    "pdf": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+  }
+]
