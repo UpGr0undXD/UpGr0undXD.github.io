@@ -466,10 +466,19 @@ function renderMusic() {
 }
 
 if (musicToggle) {
-  musicToggle.addEventListener("click", () => {
-    showingAllMusic = !showingAllMusic;
-    renderMusic();
-  });
+    musicToggle.addEventListener("click", () => {
+        showingAllMusic = !showingAllMusic;
+
+        // toggle visibility class on the collapsible container (CSS may hide/show by this class)
+        if (musicListEl) {
+            musicListEl.classList.toggle('is-open', showingAllMusic);
+        }
+
+        musicToggle.textContent = showingAllMusic ? "收起作品" : "展开更多作品";
+        musicToggle.setAttribute('aria-expanded', String(showingAllMusic));
+
+        renderMusic();
+    });
 }
 
 renderFeaturedMusic();
