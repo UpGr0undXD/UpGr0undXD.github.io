@@ -459,7 +459,7 @@ function renderMusic() {
 
     if (musicToggle) {
         const totalExtra = extraItems.length;
-        musicToggle.style.display = totalExtra <= initialMusicCount ? "none" : "inline-flex";
+        musicToggle.style.display = totalExtra === 0 ? "none" : "inline-flex";
         musicToggle.textContent = showingAllMusic ? "收起作品" : "展开更多作品";
         musicToggle.setAttribute("aria-expanded", String(showingAllMusic));
     }
