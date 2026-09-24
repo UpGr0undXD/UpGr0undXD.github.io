@@ -20,7 +20,7 @@
     "featuredVideo": true
   },
   {
-    "title": "Piano Trio No.1 —— For Cello, Contracello and Piano",
+    "title": "Piano Trio No.1, for Cello, Double bass and Piano",
     "subtitle": "(op.15 2026)",
     "description": "一首钢琴三重奏小品。钢琴，大提琴，低音提琴沉重的声音昭示着一个伟大的终章。\nA piano trio piece. The heavy sounds of the piano, cello, and double bass herald a grand finale.",
     "tags": ["Piano", "Trio", "Atonal"],
@@ -30,8 +30,17 @@
     "featuredVideo": true
   },
   {
-    "title": "Symphony No.1 \"A Voyage\"",
+    "title": "Piano Impromptu No.2 —— Hommage à Ginastera",
     "number": "01",
+    "subtitle": "(op.19 2026)",
+    "description": "剧烈冲突，复杂的和声与节奏。吉纳斯特拉式的旋律处理，键盘乐器的本质是打击乐。\nViolent conflict, complex harmonies and rhythms; melodic treatment in the style of Alberto Ginastera, treating the keyboard instrument essentially as a percussion instrument.",
+    "tags": ["Piano", "Impromptu","Ginastera"],
+    "video": "https://www.youtube.com/embed/k7X7Aj5cm4U?si=TbWL16he0VYMVkwj",
+    "pdf": "#"
+  },
+  {
+    "title": "Symphony No.1 \"A Voyage\"",
+    "number": "02",
     "subtitle": "(op.4 2025)",
     "description": "充满个性与张力的第一交响曲。波澜壮阔的大海，激昂的风暴，宁静的港湾，交织成一段奇妙的旅程。\nA symphony full of personality and tension. The vast sea, the raging storm",
     "tags": ["Film score", "Atmospheric"],
@@ -40,7 +49,7 @@
   },
   {
     "title": "Sonata for 2 Pianos",
-    "number": "02",
+    "number": "03",
     "subtitle": "(op.14 2026)",
     "description": "一首为两架钢琴而作的奏鸣曲。两架钢琴在对话中交织，旋律在空间中回荡，形成一种独特的音乐体验。\nA sonata for two pianos. The two pianos intertwine in dialogue, with melodies echoing in space, creating a unique musical experience.",
     "tags": ["Duo", "Piano"],
@@ -49,7 +58,7 @@
   },
   {
     "title": "Piano short Sonata No.1",
-    "number": "03",
+    "number": "04",
     "subtitle": "(op.13 2026)",
     "description": "短小精悍，强而有力。",
     "tags": ["Electronic", "cinortcelE"],
