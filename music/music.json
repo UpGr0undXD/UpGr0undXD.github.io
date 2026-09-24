@@ -1,6 +1,6 @@
 [
   {
-    "title": "Piano Concerto No.3",
+    "title": "Piano Concerto No.3, à la manière de Shostakovich",
     "subtitle": "(op.7 2026)",
     "description": "这首第三钢协规模宏大，变化多端，沉重而复杂。动机在挣扎中发展，旋律在不断递进。全曲不分乐章，连续演奏。\n参考了肖斯塔科维奇第五交响曲。\nIt is a large-scale, complex, and heavy work. The motifs develop in struggle, and the melodies progress continuously. The entire piece is performed without breaks between movements.\nInspired by Shostakovich's Symphony No. 5.",
     "tags": ["Piano", "Orchestra", "Featured"],
@@ -10,11 +10,11 @@
     "featuredVideo": true
   },
   {
-    "title": "Piano Impromptu No.1",
-    "subtitle": "(op.18 2026)",
-    "description": "第一首纯即兴曲。没有谱子，随心而弹。总体分为三个乐章，也可以看作无乐章分割。这下没有人说我不会弹钢琴了。\nThis is my first purely improvised piece. There is no sheet music; I simply played from the heart. Overall, it is structured into three movements, though it could also be viewed as a continuous piece without distinct breaks. Now, no one can say I don't know how to play the piano.",
-    "tags": ["Piano", "Impromptu", "Improvisation"],
-    "video": "https://www.youtube.com/embed/eHJ0IlmRd0M?si=nht9NzHoqviaB95e",
+    "title": "Piano Impromptu No.2 —— Hommage à Ginastera",
+    "subtitle": "(op.19 2026)",
+    "description": "剧烈冲突，复杂的和声与节奏。吉纳斯特拉式的旋律处理，键盘乐器的本质是打击乐。\nViolent conflict, complex harmonies and rhythms; melodic treatment in the style of Alberto Ginastera, treating the keyboard instrument essentially as a percussion instrument.",
+    "tags": ["Piano", "Impromptu","Featured","Ginastera"],
+    "video": "https://www.youtube.com/embed/k7X7Aj5cm4U?si=TbWL16he0VYMVkwj",
     "pdf": "#",
     "featured": true,
     "featuredVideo": true
@@ -30,12 +30,11 @@
     "featuredVideo": true
   },
   {
-    "title": "Piano Impromptu No.2 —— Hommage à Ginastera",
-    "number": "01",
-    "subtitle": "(op.19 2026)",
-    "description": "剧烈冲突，复杂的和声与节奏。吉纳斯特拉式的旋律处理，键盘乐器的本质是打击乐。\nViolent conflict, complex harmonies and rhythms; melodic treatment in the style of Alberto Ginastera, treating the keyboard instrument essentially as a percussion instrument.",
-    "tags": ["Piano", "Impromptu","Ginastera"],
-    "video": "https://www.youtube.com/embed/k7X7Aj5cm4U?si=TbWL16he0VYMVkwj",
+    "title": "Piano Impromptu No.1",
+    "subtitle": "(op.18 2026)",
+    "description": "第一首纯即兴曲。没有谱子，随心而弹。总体分为三个乐章，也可以看作无乐章分割。这下没有人说我不会弹钢琴了。\nThis is my first purely improvised piece. There is no sheet music; I simply played from the heart. Overall, it is structured into three movements, though it could also be viewed as a continuous piece without distinct breaks. Now, no one can say I don't know how to play the piano.",
+    "tags": ["Piano", "Impromptu", "Improvisation"],
+    "video": "https://www.youtube.com/embed/eHJ0IlmRd0M?si=nht9NzHoqviaB95e",
     "pdf": "#"
   },
   {
