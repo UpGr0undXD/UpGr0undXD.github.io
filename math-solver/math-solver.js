@@ -1,7 +1,7 @@
 // ============= 配置和工具函数 =============
 
 // 是否使用Python后端（设置为true时调用后端API）
-const USE_PYTHON_BACKEND = true;
+const USE_PYTHON_BACKEND = false;
 const BACKEND_URL = 'http://localhost:5000/api';
 
 // 显示结果
