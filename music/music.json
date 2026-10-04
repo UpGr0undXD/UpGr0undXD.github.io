@@ -10,8 +10,8 @@
     "featuredVideo": true
   },
   {
-    "title": "Piano Impromptu No.2 —— Hommage à Ginastera",
-    "subtitle": "(op.19 2026)",
+    "title": "Piano Impromptu No.2",
+    "subtitle": "(Sep. 2026)",
     "description": "剧烈冲突，复杂的和声与节奏。吉纳斯特拉式的旋律处理，键盘乐器的本质是打击乐。\nViolent conflict, complex harmonies and rhythms; melodic treatment in the style of Alberto Ginastera, treating the keyboard instrument essentially as a percussion instrument.",
     "tags": ["Piano", "Impromptu","Featured","Ginastera"],
     "video": "https://www.youtube.com/embed/k7X7Aj5cm4U?si=TbWL16he0VYMVkwj",
@@ -20,21 +20,37 @@
     "featuredVideo": true
   },
   {
-    "title": "Piano Trio No.1, for Cello, Double bass and Piano",
-    "subtitle": "(op.15 2026)",
-    "description": "一首钢琴三重奏小品。钢琴，大提琴，低音提琴沉重的声音昭示着一个伟大的终章。\nA piano trio piece. The heavy sounds of the piano, cello, and double bass herald a grand finale.",
-    "tags": ["Piano", "Trio", "Atonal"],
-    "video": "https://www.youtube.com/embed/6u-cw3AccV8?si=helbVuNhfvBtovs7",
+    "title": "Piano Sonata No.1 —— Hommage à Ginastera",
+    "subtitle": "(op.17 2026)",
+    "description": "猛烈打击，极端冲动，冥想，反复\nViolent blows, extreme impulsiveness, meditation, repetition",
+    "tags": ["Piano", "Sonata", "Modern","Ginastera","Featured"],
+    "video": "https://www.youtube.com/embed/6A3grYnLoyA?si=t8jhlyoYC58HIs-s",
     "pdf": "#",
     "featured": true,
     "featuredVideo": true
   },
   {
+    "title": "Piano Impromptu No.3",
+    "subtitle": "(Oct. 2026)",
+    "description": "第三钢琴即兴曲。古典的旋律，现代的声部处理。交织，迸发。\nPiano Impromptu No.3. Classical melodies meet modern treatment of the voices—interweaving and bursting forth.",
+    "tags": ["Piano", "Impromptu", "Improvisation","romantic"],
+    "video": "https://www.youtube.com/embed/tP86o1NVWJE?si=aENzSx9aXrT0ymSg",
+    "pdf": "#"
+  },
+  {
     "title": "Piano Impromptu No.1",
-    "subtitle": "(op.18 2026)",
+    "subtitle": "(Sep. 2026)",
     "description": "第一首纯即兴曲。没有谱子，随心而弹。总体分为三个乐章，也可以看作无乐章分割。这下没有人说我不会弹钢琴了。\nThis is my first purely improvised piece. There is no sheet music; I simply played from the heart. Overall, it is structured into three movements, though it could also be viewed as a continuous piece without distinct breaks. Now, no one can say I don't know how to play the piano.",
     "tags": ["Piano", "Impromptu", "Improvisation"],
     "video": "https://www.youtube.com/embed/eHJ0IlmRd0M?si=nht9NzHoqviaB95e",
+    "pdf": "#"
+  },
+  {
+    "title": "Piano Trio No.1, for Cello, Double bass and Piano",
+    "subtitle": "(op.15 2026)",
+    "description": "一首钢琴三重奏小品。钢琴，大提琴，低音提琴沉重的声音昭示着一个伟大的终章。\nA piano trio piece. The heavy sounds of the piano, cello, and double bass herald a grand finale.",
+    "tags": ["Piano", "Trio", "Atonal"],
+    "video": "https://www.youtube.com/embed/6u-cw3AccV8?si=helbVuNhfvBtovs7",
     "pdf": "#"
   },
   {
