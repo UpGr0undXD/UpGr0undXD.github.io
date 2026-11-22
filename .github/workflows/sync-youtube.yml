@@ -1,0 +1,40 @@
+name: Sync YouTube music
+
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install sync tool
+        run: pip install -r requirements.txt
+
+      - name: Sync channel videos
+        run: python scripts/sync_youtube_music.py
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noremail.github.com"
+          git add music/music.json
+          if git diff --staged --quiet; then
+            echo "No music.json changes"
+          else
+            git diff --staged --stat
+            git commit -m "Sync new YouTube videos"
+            git push
+          fi

@@ -1368,3 +1368,13 @@ body.dark {
     }
 
 }
+
+
+@media (min-width: 861px) {
+    /*
+       Keep the desktop view slightly smaller without affecting mobile layout.
+    */
+    html {
+        zoom: 0.9;
+    }
+}
