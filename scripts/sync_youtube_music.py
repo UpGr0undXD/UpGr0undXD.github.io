@@ -39,6 +39,7 @@ def infer_tags(title: str) -> list[str]:
         ("trio", "Trio"),
         ("fantasia", "Fantasy"),
         ("fantasy", "Fantasy"),
+        ("etude","Etude"),
     ):
         if word in lower:
             tags.append(tag)
