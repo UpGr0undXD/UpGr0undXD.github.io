@@ -925,9 +925,32 @@ body.dark {
 }
 
 .music-collapsible.is-open {
-    max-height: 2000px;
+    height: min(720px, 65vh);
+    max-height: min(720px, 65vh);
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+    padding-right: 8px;
     opacity: 1;
     margin-top: 8px;
+}
+
+.music-collapsible.is-open::-webkit-scrollbar {
+    width: 8px;
+}
+
+.music-collapsible.is-open::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.music-collapsible.is-open::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 999px;
+}
+
+.music-collapsible.is-open::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
 }
 
 .music-work-item {
